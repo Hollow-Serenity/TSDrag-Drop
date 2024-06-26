@@ -10,6 +10,9 @@ This project is a simple yet powerful drag-and-drop interface built with TypeScr
 - **TypeScript**: Enjoy the benefits of type safety and improved code quality with TypeScript.
 - **Modular Code**: Clean and organized codebase, making it easy to understand, extend, and maintain.
 
+## Contributing
+I'd love your help to make this project even better! If you have ideas for improvements or new features, feel free to open an issue or submit a pull request. Whether you're fixing a bug or adding something new, your contributions are always welcome.
+
 ## Getting Started
 
 ### What You Need
