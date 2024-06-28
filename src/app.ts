@@ -4,6 +4,9 @@ class ProjectInput {
     templateElement: HTMLTemplateElement;
     hostElement: HTMLDivElement;
     element: HTMLFormElement;
+    titleInputElement: HTMLInputElement;
+    descriptionInputElement: HTMLInputElement;
+    peopleInputElement: HTMLInputElement;
 
     // Constructor for the ProjectInput class
     constructor() {
@@ -18,11 +21,27 @@ class ProjectInput {
 
         // Get the first child of the imported content as the form element
         this.element = importNode.firstElementChild as HTMLFormElement;
-        this.element.id = 'user-input-form'; // Set the ID of the form element
+        this.element.id = 'user-input'; // Set the ID of the form element
         // Attach the form element to the host element
+
+        this.titleInputElement = this.element.querySelector('#title') as HTMLInputElement;
+        this.descriptionInputElement = this.element.querySelector('#description') as HTMLInputElement;
+        this.peopleInputElement = this.element.querySelector('#people') as HTMLInputElement;
+
+        this.configure();
         this.attach();
         
     }
+
+    private submitHandler(event: Event) {
+        event.preventDefault();
+        console.log(this.titleInputElement.value);
+    }
+
+    private configure() {
+        this.element.addEventListener('submit', this.submitHandler.bind(this));
+    }
+
 
     // Private method to attach the form element to the host element
     private attach() {
