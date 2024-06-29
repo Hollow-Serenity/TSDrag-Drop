@@ -68,14 +68,29 @@ export class ProjectInput extends Cmp<HTMLDivElement, HTMLFormElement> {
     this.peopleInputElement.value = '';
   }
 
-  @Autobind
-  private submitHandler(event: Event) {
-    event.preventDefault();
-    const userInput = this.gatherUserInput();
-    if (Array.isArray(userInput)) {
-      const [title, desc, people] = userInput;
-      projectState.addProject(title, desc, people);
-      this.clearInputs();
-    }
+  /**
+ * Handles the form submission event.
+ * Prevents the default form submission behavior.
+ * Gathers user input, validates it, and adds a new project to the project state.
+ * Clears the input fields after successful submission.
+ *
+ * @param event - The Event object representing the form submission event.
+ * @returns {void}
+ */
+@Autobind
+private submitHandler(event: Event) {
+  event.preventDefault();
+  const userInput = this.gatherUserInput();
+
+  // Check if userInput is an array (indicating valid input)
+  if (Array.isArray(userInput)) {
+    const [title, desc, people] = userInput;
+
+    // Add the new project to the project state
+    projectState.addProject(title, desc, people);
+
+    // Clear the input fields
+    this.clearInputs();
   }
+}
 }

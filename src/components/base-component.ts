@@ -30,12 +30,21 @@ export default abstract class Component<T extends HTMLElement, U extends HTMLEle
     this.attach(insertAtStart);
   }
 
-  private attach(insertAtBeginning: boolean) {
+  /**
+ * Attaches the component's element to the host element.
+ *
+ * @param insertAtBeginning - Indicates whether to insert the component's element at the beginning of the host element.
+ * If true, the component's element will be inserted after the beginning of the host element.
+ * If false, the component's element will be inserted before the end of the host element.
+ *
+ * @returns {void} - This method does not return any value.
+ */
+private attach(insertAtBeginning: boolean): void {
     this.hostElement.insertAdjacentElement(
       insertAtBeginning ? 'afterbegin' : 'beforeend',
       this.element
     );
-  }
+}
 
   abstract configure(): void;
   abstract renderContent(): void;
